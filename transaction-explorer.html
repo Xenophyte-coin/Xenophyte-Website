@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Xenophyte - Transaction Explorer</title>
+	<meta name="description" content="Xenophyte official transaction explorer." />
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<link rel="apple-touch-icon" sizes="57x57" href="https://xenophyte.com/images/icons/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="https://xenophyte.com/images/icons/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="https://xenophyte.com/images/icons/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="https://xenophyte.com/images/icons/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="https://xenophyte.com/images/icons/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="https://xenophyte.com/images/icons/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="https://xenophyte.com/images/icons/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="https://xenophyte.com/images/icons/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="https://xenophyte.com/images/icons/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192"  href="https://xenophyte.com/images/icons/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="https://xenophyte.com/images/icons/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="https://xenophyte.com/images/icons/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="https://xenophyte.com/images/icons/favicon-16x16.png">
+	<meta name="msapplication-TileImage" content="/images/icons/ms-icon-144x144.png">
+	<link rel="canonical" href="https://xenophyte.com/transaction-explorer" />
+	<script type="text/javascript" src="transaction-explorer.js"></script>
+	<script type="text/javascript" src="lang.js"></script>
+	<script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-137379520-1" async></script>
+	<script type="text/javascript" src="https://xenophyte.com/jquery.min.js"></script>
+<script>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+  	window.dataLayer = window.dataLayer || [];
+  	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'UA-137379520-1');
+</script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3B37R4J0EC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-3B37R4J0EC');
+</script>
+
+<style>
+  @import url(https://xenophyte.com/main.css);
+</style>
+
+</head>
+<body>
+
+	<nav class="navbar navbar-inverse navbar-static-top example6">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar6">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand text-hide" href="https://xenophyte.com/">Xenophyte</a>
+			</div>
+			<div id="navbar6" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="https://xenophyte.com/" title="homepage"  id="linkHomeText">Home</a></li>
+					<li><a href="https://xenophyte.com/downloads" title="downloads"  id="linkDownloadText">Downloads</a></li>
+					<li><a href="https://xenophyte.com/blockchain-explorer" title="blockchain explorer"  id="linkBlockchainText">Blockchain Explorer</a></li>
+					<li class="active"><a href="https://xenophyte.com/transaction-explorer" title="transaction explorer"  id="linkTransactionText">Transaction Explorer</a></li>
+					<li><a href="https://xenophyte.com/documents" title="documents"  id="linkDocumentText">Documents</a></li>
+					<li><a href="https://xenophyte.com/funding" title="donation"  id="linkDonateText">Donate</a></li>
+					<li><a href="https://xenophyte.com/news" title="news"  id="linkNewsText">News</a></li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Others <span class="caret"></span></a>
+							<ul class="dropdown-menu" role="menu">
+								<li><a target="_blank" href="https://discord.gg/mvc7v9FDyJ" title="Discord" rel="external, nofollow">Discord</a></li>
+								<li><a target="_blank" href="https://t.me/XENOPHYTECOIN" title="Telegram" rel="external, nofollow">Telegram</a></li>
+								<li><a target="_blank" href="https://twitter.com/XenophyteCoin" title="Twitter" rel="external, nofollow">Twitter</a></li>
+            						</ul>
+          				</li>
+				</ul>
+			</div>
+		</div>
+  	</nav>
+
+	<img src="https://xenophyte.com/images/xenophyte-logo.png" class="img-responsive center-block" alt="Xenophyte official logo" title="Xenophyte official logo"></img>
+
+	<div class="container">
+		<div class="row">
+			<div class="panel panel-default" style="overflow-x:hidden;">
+				<div class="panel-heading" id="XenophyteBlockchain">
+					<h1>Transaction Explorer</h1>
+				</div>
+				<div class="panel-body" id="XenophyteBlockchainList">
+					<div class="row row-eq-height">
+						<div class="col-xs-4 col-md-4">
+							<p>Total Transaction: <span id="TotalTransactionXenophyte">Loading..</span></p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="usr">Transaction Hash:</label>
+						<input type="text" class="form-control" id="transactionHashSearched"></input>
+						<button type="button" class="btn btn-default" id="searchXenophyteTransactionPerHash">Search</button>
+					</div>
+					<div id="XenophyteTransactionResearchResult">
+						<div class="panel-heading">
+							<h2>Transaction Result</h2>
+						</div>
+						<div class="panel-body" id="XenophyteBlockchainTransactionResult">
+							<p>Transaction ID: <span id="transactionId"></span></p>
+							<p>Transaction Type: <span id="transactionType"></span></p>
+							<p>Transaction Amount: <span id="transactionAmount"></span></p>
+							<p>Transaction Fee: <span id="transactionFee"></span></p>
+							<p>Transaction Wallet Address Sender: <span id="transactionWalletAddressSender"></span></p>
+							<p>Transaction Wallet Address Receiver: <span id="transactionWalletAddressReceiver"></span></p>
+							<p>Transaction Date sent: <span id="transactionDateSent"></span></p>
+							<p>Transaction Date received: <span id="transactionDateReceived"></span></p>
+							<p>Transaction Hash: <span id="transactionHash"></span></p>
+							<p>Transaction Hash QR Code:</p>
+							<span id="transactionQRCode"></span>
+						</div>
+					</div>
+					<div class="table-responsive">
+						<table class="table table-bordered" id="transactionTable">
+							<thead>
+								<tr>
+									<th>ID</th>
+									<th><i class="fa fa-list-alt"> Type</th>
+									<th><i class="fa fa-money"> Amount</th>
+									<th><i class="fa fa-money"> Fee</th>
+									<th><i class="fa fa-paw"> Sender</th>
+									<th><i class="fa fa-paw"> Receiver</th>
+									<th><i class="fa fa-clock-o"> Date Sent</th>
+									<th><i class="fa fa-clock-o"> Date Received</th>
+									<th><i class="fa fa-paw"> Hash</th>
+								</tr>
+							</thead>
+							<tbody id="XenophyteListTransactionRows">
+							</tbody>
+						</table>
+					</div>
+					<center><button type="button" class="btn btn-default" id="showXenophyteMoreTransaction">Show More</button></center>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<footer class="navbar-default navbar-static-bottom">
+		<div class="container-fluid">
+			<p class="text-center" id="textFooter">&copy; 2023 Copyright: <a href="https://xenophyte.com/">XENOPHYTE</a></p>
+			<span><p class="text-center"id="textCopyright">Website created by Xenophyte all rights reserved.</p></span>
+		</div>
+	</footer>
+</body>
+</html>
