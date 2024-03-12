@@ -152,25 +152,35 @@
 
 	<!-- INI XENOP_charts .-~^ -->
 
-	<div class="text-center">
-		<button type="button" class="btn btn-default" onclick="getGP();">sHOW CHARTs</button>
-		<div class="row row-eq-height">
-			<div  class="col-xs-4 col-md-4">
 
-			</div>
-			<div class="col-xs-4 col-md-4" style="text-align:center;">
-				<h3>Block Rewards Distribution</h3>
-				<img id="XENOP_charts_BRD" height="200" width="200" style="height:100%;width:100%;" src="data:image/jpg;base64,
-					iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==" alt="Block Rewards Distribution" />
-				<br />
-				<br />
-				<p id="leyendBRD" style="color:white;"></p><br />
-			</div>
-			<div  class="col-xs-4 col-md-4">
+	<div class="container">
+		<div class="row">
+			<div class="panel panel-default" style="overflow-x:hidden;">
 
+				<div class="panel-body" id="xenophyteBlockchainChart">
+					<div class="text-center">
+						<button type="button" class="btn btn-default" onclick="getGP();">sHOW CHARTs</button>
+						<div class="row row-eq-height">
+							<div  class="col-xs-4 col-md-4">
+
+							</div>
+							<div class="col-xs-4 col-md-4" style="text-align:center;">
+								<h3>Block Rewards Distribution</h3>
+								<img id="XENOP_charts_BRD" height="200" width="200" style="height:100%;width:100%;" src="data:image/jpg;base64,
+									iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==" alt="Block Rewards Distribution" />
+								<br />
+								<br />
+								<p id="leyendBRD" style="color:black;"></p><br />
+							</div>
+							<div  class="col-xs-4 col-md-4">
+
+							</div>
+						</div>
+						<p id="loadingBRD">... Waiting for User ...</p>		
+					</div>
+				</div>
 			</div>
 		</div>
-		<p id="loadingBRD">... Waiting for User ...</p>		
 	</div>
 
 	<!--<div class="collapse overflow-hidden">
