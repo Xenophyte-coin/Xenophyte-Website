@@ -286,7 +286,7 @@
 	function drawRotated(idChart, angle, imageSrc) {
 		var iXENOPloading = document.getElementById(idChart);
 			iXENOPloading.src = imageSrc;
-			iXENOPloading.style = 'transform: rotate(' + angle.toString() + 'deg);' //RADIANS > rotate(degrees * Math.PI / 180);		
+			iXENOPloading.style = 'height:auto;width:90%;transform: rotate(' + angle.toString() + 'deg);' //RADIANS > rotate(degrees * Math.PI / 180);		
 	}
 
 
@@ -372,15 +372,17 @@
 		var hC = Math.floor(mTm / 2);
 		var vC = Math.floor(mTm / 2);
 
-		const canvasSize = mTm; // El tamaño del lienzo es igual al tamaño de la matriz
+		// El tamaño del lienzo es igual al tamaño de la matriz
 		const centerX = hC;
 		const centerY = vC;
 		const radius = Math.floor((mTm * 0.8) / 2); // 80% del tamaño del lienzo
 
 		// Calculamos el total de los valores en el array de entrada
-		var total = 0;
+		var total = 0;		
 		dataBRD.forEach((v) => total += v.transactionAmount);		
-		
+
+		//var colors = generateArrayColors(dataBRD.length);		
+
 		var innerLeyendSBRD = '';
 
 		// Inicializamos el ángulo de inicio
@@ -409,7 +411,7 @@
 			// Calculamos el ángulo final
 			const endAngle = startAngle + sliceAngle;
 			
-			for (var fillAngle = startAngle; fillAngle < endAngle; fillAngle += parseFloat(0.005)) {
+			for (var fillAngle = startAngle; fillAngle < endAngle; fillAngle += parseFloat(0.01)) {
 
 				for (var extendRadius = radius / 2; extendRadius < radius; extendRadius += 1) {
 					var xM = Math.floor((Math.cos(fillAngle) * extendRadius) + centerX);
@@ -451,27 +453,29 @@
 	// THankis MSFT Copilot ;)
 	// >
 
-
 	// coderCamp....org
 
-	const hexCharacters = [3, "E", 6, "B", 0, 8, "A", 4, "D", 9, 2, "C", 5, 7, "F", 1];
-	//	[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "A", "B", "C", "D", "E", "F"]
-
-	function getCharacter(index) {
-		return hexCharacters[index]
-	}
-
+	const hexCharactersLow = [0, 1, 2, 3, 4, 5, 6, 7];
+	const hexCharactersHi = [8, 9, "A", "B", "C", "D", "E", "F"];
+	
 	function generateNewColor() {
 		let hexColorRep = "";
 
+		var flipFlop = 1;
 		for (let index = 0; index < 6; index++) {
-			const randomPosition = Math.floor(Math.random() * hexCharacters.length);
-			hexColorRep += getCharacter(randomPosition);
+
+			const randomPosition = Math.floor(Math.random() * 8);
+
+			hexColorRep += flipFlop ? hexCharactersHi[randomPosition] : hexCharactersLow[randomPosition];
+						
+			flipFlop = Math.random();
 		}
 
-		return hexColorRep + "FF";
-	}
+		hexColorRep += Math.floor(Math.random() * 255).toString(16).padStart(2, '0');
 
+		return hexColorRep;
+	}
+	
 	function groupBy(array, keysToGroup, keysToSum) {
 		const groupedData = {};
 
