@@ -1,18 +1,18 @@
 	function loadScripts(urls, length, success)
 	{
-    			if(length > 0)
+		if(length > 0)
+		{
+        		script = document.createElement("SCRIPT");
+        		script.src = urls[length-1];
+        		script.onload = function()
 			{
-        			script = document.createElement("SCRIPT");
-        			script.src = urls[length-1];
-        			script.onload = function()
-				{
-					loadScripts(urls, length-1, success);               
-				};
-				document.getElementsByTagName("head")[0].appendChild(script);
-    			}
-    			else
-        			if(success)
-            				success();
+				loadScripts(urls, length-1, success);               
+			};
+			document.getElementsByTagName("head")[0].appendChild(script);
+    		}
+    		else
+        		if(success)
+            			success();
 		
 	}
 
@@ -21,6 +21,7 @@
 	var pageBlock = 1;
 	var maxBlock = 10;
 	var blockMined = [];
+	var blockMinedData = [];
 
 	function GetCoinNetworkInformation()
 	{
@@ -61,7 +62,7 @@
 						}
 						totalBlockMined = data.coin_total_block_mined;
 					}
-				}
+				}							
 			}
 		}
 		xmlHttp.open("GET", apiHost + "get_coin_network_full_stats", true); // async
@@ -120,6 +121,8 @@
 				if (blockMined.indexOf(data.block_id) == -1)
 				{
 					blockMined.push(data.block_id);
+					blockMinedData.push(data); // =)
+
 					var rowBlock = document.createElement('tr');
 					rowBlock.setAttribute('data-json', data);
 					if (CheckBlockFeeUpdate(data.block_timestamp_create)) // Implement block fee detail
@@ -213,6 +216,8 @@
 				if (blockMined.indexOf(data.block_id) == -1)
 				{
 					blockMined.push(data.block_id);
+					blockMinedData.push(data); // =)
+
 					var rowBlock = document.createElement('tr');
 					rowBlock.setAttribute('data-json', data);
 					var rowBlockContent = '';
@@ -250,6 +255,300 @@
 		xmlHttp.send();
 	}
 
+	// INI XENOP_charts .-~^
+
+	var transactionsBlocks = [];
+		
+	var BITMAP_HEX_HEADER_200 =
+		"424D3600000000000000360000002800" +
+		"0000C8000000C8000000010020000000" +
+		"00000000000000000000000000000000";
+
+	var BITMAP_HEX_HEADER_32 = "424D36000000000000003600000028000000200000002000000001002000000000000000000000000000000000000000";
+			
+	// HEX base64 from The BiG and Know image "RedBrick.bmp"
+	var redBrick = "RedBrick.bmp"; // )
+
+	var Angle = 0;
+	var tempV = '';	
+	var blockMined_CharTs = [];
+	var transactionsBlocks = [];
+
+	var timerGP = setInterval(loadingGP, 100);
+	//clearInterval(timerGP);
+
+	function loadingGP() {
+		Angle += 30;		
+		drawRotated("XENOP_charts_BRD", Angle, "images/logo.png");
+	}
+
+	// =) (= =) (=
+	function drawRotated(idChart, angle, imageSrc) {
+		var iXENOPloading = document.getElementById(idChart);
+			iXENOPloading.src = imageSrc;
+			iXENOPloading.style = 'transform: rotate(' + angle.toString() + 'deg);' //RADIANS > rotate(degrees * Math.PI / 180);		
+	}
+
+
+	async function getGP() {
+		
+		// GET NEW BLOCKs iN MeMo
+		var newBlocks = blockMined.filter((item) => blockMined_CharTs.indexOf(item) === -1);
+		blockMined_CharTs = blockMined.slice();		
+				
+		if (newBlocks.length > 0) {
+			
+			for (var blockId of newBlocks) {
+
+				var blockData = blockMinedData.find(x => x.block_id === blockId);
+				var tH = blockData ? blockData.block_transaction_hash : undefined;
+
+				var xmlHttp = new XMLHttpRequest();
+				xmlHttp.onreadystatechange = function () {
+					if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+						var data = JSON.parse(xmlHttp.responseText);
+
+						var type = "Unknown";
+						var amount = "Hidden";
+						var fee = "Hidden";
+						if (data.transaction_id_sender == "m") {
+							type = "Blockchain";
+							if (CheckBlockFeeUpdate(data.transaction_timestamp_sended)) {
+								amount = parseFloat(9.5).toFixed(8);
+								fee = parseFloat(0.5).toFixed(8);
+							}
+							else {
+								amount = parseFloat(10).toFixed(8);
+								fee = parseFloat(0).toFixed(8);
+							}
+						}
+						else if (data.transaction_id_sender == "f") {
+							type = "Dev Fee or Testers Fee";
+						}
+						else if (data.transaction_id_sender == "r") {
+							type = "RemoteNode Fee";
+						}
+						else {
+							type = "Wallet";
+						}
+
+						transactionsBlocks.push({
+							'blockId': blockId,
+							'transactionId': data.transaction_id,
+							'transactionType': type,
+							'transactionAmount': amount,
+							'transactionFee': fee,
+							'transactionWalletAddressSender': data.transaction_wallet_address_sender,
+							'transactionWalletAddressReceiver': data.transaction_wallet_address_receiver,
+							'transactionDateSent': formatDate(data.transaction_timestamp_sended),
+							'transactionDateReceived': formatDate(data.transaction_timestamp_received),
+							'transactionHash': data.transaction_hash
+						});
+
+					}
+				}
+				xmlHttp.open("GET", apiHost + "get_coin_transaction_per_hash=" + tH, false); // async
+				xmlHttp.send();
+			}			
+		}
+
+		var dataBRD = groupBy(transactionsBlocks, ['transactionWalletAddressReceiver', 'transactionType'], ['transactionAmount', 'transactionFee'])
+
+		var mTm = 200;
+
+		// HEX COLORS PAINTING mTm pixels/Image
+		var _TEMP_HEX_MATRIX_ = [];
+
+		// INICIALIZATION
+		var emptyColor = "FFFFFFFF";
+		for (var i = 0; i < mTm; i++) {
+			var row = [];
+			for (var j = 0; j < mTm; j++) {
+				row.push(emptyColor);
+			}
+			_TEMP_HEX_MATRIX_.push(row);
+		}
+		
+		var hC = Math.floor(mTm / 2);
+		var vC = Math.floor(mTm / 2);
+
+		const canvasSize = mTm; // El tamaño del lienzo es igual al tamaño de la matriz
+		const centerX = hC;
+		const centerY = vC;
+		const radius = Math.floor((mTm * 0.8) / 2); // 80% del tamaño del lienzo
+
+		// Calculamos el total de los valores en el array de entrada
+		var total = 0;
+		dataBRD.forEach((v) => total += v.transactionAmount);		
+		
+		var innerLeyendSBRD = '';
+
+		// Inicializamos el ángulo de inicio
+		let startAngle = parseFloat(Math.PI / 2 * (-1)); // -90 Comenzamos desde arriba (12 en punto)
+
+		// Dibujamos cada quesito
+		for (let i = 0; i < dataBRD.length; i++) {
+
+			const sliceAngle = parseFloat(dataBRD[i].transactionAmount * 2 * Math.PI / total)
+
+			// Rellenamos el quesito con el color correspondiente
+			const color = generateNewColor();
+			//var formatedColorHTML = color.substring(0, 2) + color.substring(2, 2) + color.substring(4, 2);
+
+			var hexCLey = BITMAP_HEX_HEADER_32;
+
+			for (var CLc = 0; CLc < 32 * 32; CLc++) {
+				hexCLey += color;
+			}
+
+			var bACL = hexStringToArray(hexCLey);
+			var base64CL = arrayToBase64(bACL);
+
+			innerLeyendSBRD += "<span style='font-size:smaller;word-wrap:break-word;'><img style='float:left;' src='data:image/jpg;base64, " + base64CL + "'/>" + dataBRD[i].transactionWalletAddressReceiver + "</span><br /><br />"
+			
+			// Calculamos el ángulo final
+			const endAngle = startAngle + sliceAngle;
+			
+			for (var fillAngle = startAngle; fillAngle < endAngle; fillAngle += parseFloat(0.005)) {
+
+				for (var extendRadius = radius / 2; extendRadius < radius; extendRadius += 1) {
+					var xM = Math.floor((Math.cos(fillAngle) * extendRadius) + centerX);
+					var yM = Math.floor((Math.sin(fillAngle) * extendRadius) + centerY);
+					_TEMP_HEX_MATRIX_[xM][yM] = color;
+				}				
+			}
+			
+			// Actualizamos el ángulo de inicio para el siguiente quesito
+			startAngle = endAngle;
+		}
+				
+		var sHexDATA = '';
+
+		for (var i = 0; i < mTm; i++) {
+			for (var j = 0; j < mTm; j++) {
+
+				sHexDATA += _TEMP_HEX_MATRIX_[i][j];
+
+			}
+		}
+				
+		// SEND HEX BMP to Base64 DATA
+		var hexString = BITMAP_HEX_HEADER_200 + sHexDATA;		
+		var bA = hexStringToArray(hexString);		
+		var base64 = arrayToBase64(bA);
+						
+		clearInterval(timerGP);
+		
+		drawRotated("XENOP_charts_BRD", 0, "data:image/jpg;base64, " + base64);
+
+		var leyendBRD = document.getElementById("leyendBRD");
+		leyendBRD.innerHTML = innerLeyendSBRD;
+		
+		var loading_TB_BRD = document.getElementById("loadingBRD");
+		loading_TB_BRD.innerHTML = '';
+	}
+
+	// THankis MSFT Copilot ;)
+	// >
+
+
+	// coderCamp....org
+
+	const hexCharacters = [3, "E", 6, "B", 0, 8, "A", 4, "D", 9, 2, "C", 5, 7, "F", 1];
+	//	[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "A", "B", "C", "D", "E", "F"]
+
+	function getCharacter(index) {
+		return hexCharacters[index]
+	}
+
+	function generateNewColor() {
+		let hexColorRep = "";
+
+		for (let index = 0; index < 6; index++) {
+			const randomPosition = Math.floor(Math.random() * hexCharacters.length);
+			hexColorRep += getCharacter(randomPosition);
+		}
+
+		return hexColorRep + "FF";
+	}
+
+	function groupBy(array, keysToGroup, keysToSum) {
+		const groupedData = {};
+
+		// Agrupar y sumar
+		array.forEach((item) => {
+			const groupKey = keysToGroup.map((key) => item[key]).join('|');
+			if (!groupedData[groupKey]) {
+				groupedData[groupKey] = { ...item };
+				keysToSum.forEach((key) => {
+					groupedData[groupKey][key] = parseFloat(item[key]);
+				});
+			} else {
+				keysToSum.forEach((key) => {
+					groupedData[groupKey][key] += parseFloat(item[key]);
+				});
+			}
+		});
+
+		// Aplanar los datos agrupados en un array
+		const flattenedArray = Object.keys(groupedData).map((groupKey) => {
+			return {
+				...groupedData[groupKey],
+				groupKey: groupKey.split('|').reduce((obj, key, index) => {
+					obj[keysToGroup[index]] = key;
+					return obj;
+				}, {})
+			};
+		});
+
+		return flattenedArray;
+	}
+	
+	function distinct(items, mapper) {
+		if (!mapper) mapper = (item) => item;
+		return items.map(mapper).reduce((acc, item) => {
+			if (acc.indexOf(item) === -1) acc.push(item);
+			return acc;
+		}, []);
+	}
+
+	function hexStringToArray(hexString) {
+		var array = [];
+		for (var i = 0; i < hexString.length; i += 2) {
+			array.push(parseInt(hexString.substring(i, i + 2), 16));
+		}
+		return array;
+	}
+
+	function arrayToBase64(arrayDeEnteros) {
+		const base64Chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
+		let base64 = '';
+		let i;
+
+		for (i = 0; i < arrayDeEnteros.length - 2; i += 3) {
+			base64 += base64Chars[arrayDeEnteros[i] >> 2];
+			base64 += base64Chars[((arrayDeEnteros[i] & 3) << 4) | (arrayDeEnteros[i + 1] >> 4)];
+			base64 += base64Chars[((arrayDeEnteros[i + 1] & 15) << 2) | (arrayDeEnteros[i + 2] >> 6)];
+			base64 += base64Chars[arrayDeEnteros[i + 2] & 63];
+		}
+
+		// Padding
+		if (i < arrayDeEnteros.length) {
+			base64 += base64Chars[arrayDeEnteros[i] >> 2];
+			if (i === arrayDeEnteros.length - 2) {
+				base64 += base64Chars[((arrayDeEnteros[i] & 3) << 4) | (arrayDeEnteros[i + 1] >> 4)];
+				base64 += base64Chars[(arrayDeEnteros[i + 1] & 15) << 2];
+				base64 += '=';
+			} else {
+				base64 += base64Chars[(arrayDeEnteros[i] & 3) << 4];
+				base64 += '==';
+			}
+		}
+
+		return base64;
+	}
+
+	// END XENOP_charts .-~^
 
 //-------------------------------------------------------------------------------------//
 // Other functions
@@ -496,5 +795,5 @@
 		GetCoinNetworkInformation();
 
 		setInterval(GetCoinNetworkInformation, 5000);
-
+		
 	});
