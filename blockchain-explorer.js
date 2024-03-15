@@ -381,7 +381,7 @@
 		var total = 0;		
 		dataBRD.forEach((v) => total += v.transactionAmount);		
 
-		//var colors = generateArrayColors(dataBRD.length);		
+		var colors = generateNColorS(dataBRD.length);
 
 		var innerLeyendSBRD = '';
 
@@ -394,8 +394,7 @@
 			const sliceAngle = parseFloat(dataBRD[i].transactionAmount * 2 * Math.PI / total)
 
 			// Rellenamos el quesito con el color correspondiente
-			const color = generateNewColor();
-			//var formatedColorHTML = color.substring(0, 2) + color.substring(2, 2) + color.substring(4, 2);
+			const color = colors[i]; //generateNewColor();			
 
 			var hexCLey = BITMAP_HEX_HEADER_32;
 
@@ -458,22 +457,33 @@
 	const hexCharactersLow = [0, 1, 2, 3, 4, 5, 6, 7];
 	const hexCharactersHi = [8, 9, "A", "B", "C", "D", "E", "F"];
 	
-	function generateNewColor() {
-		let hexColorRep = "";
+	function generateNColorS(n) {
 
-		var flipFlop = 1;
-		for (let index = 0; index < 6; index++) {
+		var colors = [];
 
-			const randomPosition = Math.floor(Math.random() * 8);
+		var flipFlop = false;
+		for (let iC = 0; iC < n; iC++) {
 
-			hexColorRep += flipFlop ? hexCharactersHi[randomPosition] : hexCharactersLow[randomPosition];
-						
-			flipFlop = Math.random();
+			let hexColorRep = "";
+			
+			for (let index = 0; index < 6; index++) {
+
+				if (index % 2 == 0) {
+					flipFlop = !flipFlop; //Math.round(Math.random()) == 0 ? false : true;
+				}
+
+				const randomPosition = Math.floor(Math.random() * 8);
+
+				hexColorRep += flipFlop ? hexCharactersHi[randomPosition] : hexCharactersLow[randomPosition];
+
+			}
+
+			hexColorRep += Math.floor(Math.random() * 255).toString(16).padStart(2, '0');
+				//Math.floor(Math.random() * 128 + (flipFlop ? 0 : 128)).toString(16).padStart(2, '0');
+
+			colors.push(hexColorRep);
 		}
-
-		hexColorRep += Math.floor(Math.random() * 255).toString(16).padStart(2, '0');
-
-		return hexColorRep;
+		return colors;
 	}
 	
 	function groupBy(array, keysToGroup, keysToSum) {
