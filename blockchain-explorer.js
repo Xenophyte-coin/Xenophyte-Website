@@ -286,7 +286,7 @@
 	function drawRotated(idChart, angle, imageSrc) {
 		var iXENOPloading = document.getElementById(idChart);
 			iXENOPloading.src = imageSrc;
-			iXENOPloading.style = 'transform: rotate(' + angle.toString() + 'deg);' //RADIANS > rotate(degrees * Math.PI / 180);		
+			iXENOPloading.style = 'height:auto;width:90%;transform: rotate(' + angle.toString() + 'deg);' //RADIANS > rotate(degrees * Math.PI / 180);		
 	}
 
 
@@ -372,15 +372,17 @@
 		var hC = Math.floor(mTm / 2);
 		var vC = Math.floor(mTm / 2);
 
-		const canvasSize = mTm; // El tamaño del lienzo es igual al tamaño de la matriz
+		// El tamaño del lienzo es igual al tamaño de la matriz
 		const centerX = hC;
 		const centerY = vC;
 		const radius = Math.floor((mTm * 0.8) / 2); // 80% del tamaño del lienzo
 
 		// Calculamos el total de los valores en el array de entrada
-		var total = 0;
+		var total = 0;		
 		dataBRD.forEach((v) => total += v.transactionAmount);		
-		
+
+		var colors = generateNColorS(dataBRD.length);
+
 		var innerLeyendSBRD = '';
 
 		// Inicializamos el ángulo de inicio
@@ -392,8 +394,7 @@
 			const sliceAngle = parseFloat(dataBRD[i].transactionAmount * 2 * Math.PI / total)
 
 			// Rellenamos el quesito con el color correspondiente
-			const color = generateNewColor();
-			//var formatedColorHTML = color.substring(0, 2) + color.substring(2, 2) + color.substring(4, 2);
+			const color = colors[i]; //generateNewColor();			
 
 			var hexCLey = BITMAP_HEX_HEADER_32;
 
@@ -409,7 +410,7 @@
 			// Calculamos el ángulo final
 			const endAngle = startAngle + sliceAngle;
 			
-			for (var fillAngle = startAngle; fillAngle < endAngle; fillAngle += parseFloat(0.005)) {
+			for (var fillAngle = startAngle; fillAngle < endAngle; fillAngle += parseFloat(0.01)) {
 
 				for (var extendRadius = radius / 2; extendRadius < radius; extendRadius += 1) {
 					var xM = Math.floor((Math.cos(fillAngle) * extendRadius) + centerX);
@@ -451,27 +452,40 @@
 	// THankis MSFT Copilot ;)
 	// >
 
-
 	// coderCamp....org
 
-	const hexCharacters = [3, "E", 6, "B", 0, 8, "A", 4, "D", 9, 2, "C", 5, 7, "F", 1];
-	//	[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "A", "B", "C", "D", "E", "F"]
+	const hexCharactersLow = [0, 1, 2, 3, 4, 5, 6, 7];
+	const hexCharactersHi = [8, 9, "A", "B", "C", "D", "E", "F"];
+	
+	function generateNColorS(n) {
 
-	function getCharacter(index) {
-		return hexCharacters[index]
-	}
+		var colors = [];
 
-	function generateNewColor() {
-		let hexColorRep = "";
+		var flipFlop = false;
+		for (let iC = 0; iC < n; iC++) {
 
-		for (let index = 0; index < 6; index++) {
-			const randomPosition = Math.floor(Math.random() * hexCharacters.length);
-			hexColorRep += getCharacter(randomPosition);
+			let hexColorRep = "";
+			
+			for (let index = 0; index < 6; index++) {
+
+				if (index % 2 == 0) {
+					flipFlop = !flipFlop; //Math.round(Math.random()) == 0 ? false : true;
+				}
+
+				const randomPosition = Math.floor(Math.random() * 8);
+
+				hexColorRep += flipFlop ? hexCharactersHi[randomPosition] : hexCharactersLow[randomPosition];
+
+			}
+
+			hexColorRep += Math.floor(Math.random() * 255).toString(16).padStart(2, '0');
+				//Math.floor(Math.random() * 128 + (flipFlop ? 0 : 128)).toString(16).padStart(2, '0');
+
+			colors.push(hexColorRep);
 		}
-
-		return hexColorRep + "FF";
+		return colors;
 	}
-
+	
 	function groupBy(array, keysToGroup, keysToSum) {
 		const groupedData = {};
 

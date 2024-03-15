@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Xenophyte - Whitepaper v1.4</title>
+	<meta name="description" content="Xenophyte official Whitepaper page." />
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<link rel="apple-touch-icon" sizes="57x57" href="https://xenophyte.com/images/icons/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="https://xenophyte.com/images/icons/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="https://xenophyte.com/images/icons/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="https://xenophyte.com/images/icons/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="https://xenophyte.com/images/icons/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="https://xenophyte.com/images/icons/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="https://xenophyte.com/images/icons/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="https://xenophyte.com/images/icons/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="https://xenophyte.com/images/icons/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192"  href="https://xenophyte.com/images/icons/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="https://xenophyte.com/images/icons/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="https://xenophyte.com/images/icons/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="https://xenophyte.com/images/icons/favicon-16x16.png">
+	<meta name="msapplication-TileImage" content="/images/icons/ms-icon-144x144.png">
+	<link rel="canonical" href="https://xenophyte.com/whitepaper" />
+	<script type="text/javascript" src="whitepaper.js" async></script>
+	<script type="text/javascript" src="lang.js"></script>
+	<script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-137379520-1" async></script>
+<script>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+  	window.dataLayer = window.dataLayer || [];
+  	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'UA-137379520-1');
+</script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3B37R4J0EC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-3B37R4J0EC');
+</script>
+
+<style>
+	@import url(https://xenophyte.com/main.css);
+</style>
+
+</head>
+<body>
+	<nav class="navbar navbar-inverse navbar-static-top example6">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar6">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand text-hide" href="https://xenophyte.com/">Xenophyte</a>
+			</div>
+			<div id="navbar6" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="https://xenophyte.com/" title="homepage" id="linkHomeText">Home</a></li>
+					<li><a href="https://xenophyte.com/downloads" title="downloads" id="linkDownloadText">Downloads</a></li>
+					<li><a href="https://xenophyte.com/blockchain-explorer" title="blockchain explorer" id="linkBlockchainText">Blockchain Explorer</a></li>
+					<li><a href="https://xenophyte.com/transaction-explorer" title="transaction explorer" id="linkTransactionText">Transaction Explorer</a></li>
+					<li><a href="https://xenophyte.com/documents" title="documents" id="linkDocumentText">Documents</a></li>
+					<li class="active"><a href="https://xenophyte.com/whitepaper" title="whitepaper" id="linkWhitePaperText">Whitepaper</a></li>
+					<li><a href="https://xenophyte.com/funding" title="donation" id="linkDonateText">Donate</a></li>
+					<li><a href="https://xenophyte.com/news" title="news" id="linkNewsText">News</a></li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Contact<span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+							<li><a target="_blank" href="https://discord.gg/mvc7v9FDyJ" title="Discord" rel="external, nofollow">Discord</a></li>
+							<li><a target="_blank" href="https://t.me/XENOPHYTECOIN" title="Telegram" rel="external, nofollow">Telegram</a></li>
+							<li><a target="_blank" href="https://twitter.com/XenophyteCoin" title="Twitter" rel="external, nofollow">Twitter</a></li>
+						</ul>
+					</li>
+
+				</ul>
+			</div>
+		</div>
+  	</nav>
+	<img class="img-responsive center-block" alt="Xenophyte official logo" title="Xenophyte official logo" src="images/whitepaper/1.4v/001-img-xenophyteLogo.png" />
+	<div class="container">
+		<div class="row">
+			<div class="panel panel-default" style="overflow-x:hidden;">
+				<div class="panel-heading" id="XenophyteWhitepaperTitle">					
+					<h1 class="text-center">The Xenophyte (XENOP)</h1>
+					<h2 class="text-center">A fast, lightweight and portable Central Cryptocurrency</h2>
+				</div>
+				<div class="panel-body" id="XenophyteWhitepaperAutor">
+					<h4 class="text-center">Sam Segura</h4>
+					<h4 class="text-center">France</h4>
+				</div>
+				<div class="panel-body" id="XenophyteWhitepaperDated">
+					<h4 class="text-center">Written: 18/03/2019</h4>
+					<h4 class="text-center">Updated: 05/01/2022</h4>
+					<h4 class="text-center">Version: 1.4</h4>
+				</div>
+				<div class="panel-body" id="XenophyteWhitepaperConsiderations">
+					<h6 class="text-center">The Whitepaper can be modified during the Xenophyte test phase and can also be modified after the last phase if a significant update is implemented in its operating protocol.</h6>
+				</div>
+
+				<div class="panel-body" id="XenophyteWhitepaperSummary">
+					<h3 class="text-center"><b>Summary</b></h3>
+					<h4 class="text-center"><b>Xenophyte is a centralized cryptocurrency.</b></h4>
+					<h5>
+						Payments are processed and verified on a single central point.
+						<b>Xenophyte</b> is fully developed under the C# programming language, created and developed by <b>Microsoft</b>. <b>Xenophyte</b> tools are not limited to Windows systems and they can be ported to other systems such as Linux, Android and others by external and valid technologies such as Xamarin and Mono Several points provide access to the network of the centralized Blockchain.  aims to provethat mining can be protected in real time against ASIC's without going through a Soft/Hard Forkand without the need to submit any significant updates to users or to important network points of the cryptocurrency, such as Seed Nodes and Remote Nodes to keep them compatible with the network.
+						The purpose is also to propose the possibility that the transactions sent can be received in a fast wayby being only linked to the natural activity of the users on the sending of the transactions and not with the mining operation.
+						Also that it is possible to link each amount contained in a total wallet balance to an identification number of the mining block to ensure that the amount does exist and is not duplicated..
+						One of the main functions is also to give the total user balance linked to a bulk mining amount list without the need to synchronize all data of the Blockchain, while putting in provision the history tothe users, while encrypting the transactions carried out so that it is only read by the users concerned with a specific transaction.
+						It is nevertheless possible to carry out a Fork (copy) of the Blockchain without obtaining the source code of it despite being centralized thanks to the complete history of the blocks and transactions done without discovering the total amount in the wallet of a user. The user must provide their wallet address and his public key so the system can decrypt the related transactions to obtain the users balance, ie you can theoretically get the total amount of money operated by the mining without getting the balance of your users if you try to make a copy of the Blockchain.
+						The user must provide their wallet address and his public key so the system can decrypt the related transactions to obtain the users balance, ie you can theoretically get the total amount of money operated by the mining without getting the balance of your users if you
+						try to make a copy of the Blockchain.So you can start from the point of your copy and welcome new users without penalizing the existingusers who will be able to obtain their transaction amounts thanks to their wallet address and public key if that is their wish and that your copy is well and truly consistent with all data.
+						try to make a copy of the Blockchain.So you can start from the point of your copy and welcome new users without penalizing the existingusers who will be able to obtain their transaction amounts thanks to their wallet address and public key if that is their wish and that your copy is well and truly consistent with all data. Check out the features of Xenophyte and to finish the details of these features below:
+					</h5>
+				</div>
+
+				<div class="panel-body" id="XenophyteWhitepaperCharacteristics">
+					<h3 class="text-center"><b>I. Characteristics of the Blockchain and its network.</b></h3>
+					<h4>1.	The <b>Blockchain</b> calculates the total balance of the user by a list of blocks in contrast to a single amount that could easily be falsified or compromised by a bug.It links each amount that makes up a wallet balance to an ID of a block obtained during a mining operation, which allows to cut the amount of this block and send a part of it while keeping his ID. This also allows to get no block amount greater than the reward of it when mining the one.Each block amount must correspond to the total amount of the reward of the latter when it is recomposed in one during the verification of the amounts.</h4>
+					<img style="width:60%;height:auto" class="img-responsive center-block" src="images/whitepaper/1.4v/002-img-balanceCalculation.png" alt="Balance Calculation" title="Balance Calculation" />
+					<h4>2.	The <b>Blockchain</b> creates an instance for each existing wallet so that it can be processed in real time and connected more easily to make a transaction. However, the user will have to use his <b>PIN code</b> to unlock his instance to which he is connected.</h4>
+					<img style="width:60%;height:auto" class="img-responsive center-block" src="images/whitepaper/1.4v/003-img-walletInstance.png" alt="Wallet Instance" title="Wallet Instance" />
+					<h4>3.	<b>The Blockchain</b> only processes static packet commands, ie any type of received packet that is not supported is not allowed as valid and causes an intended disconnection of the one sending it and also the possibility of being banned through <b>Seed Nodes</b>. This is also valid if the sent packets are not sent in the order of the static procedures..</h4>
+					<img style="width:60%;height:auto" class="img-responsive center-block" src="images/whitepaper/1.4v/004-img-unknowPackets.png" alt="Unknow Packets" title="Unknow Packets" />
+					<h4>4.	<b>The Blockchain</b> only allows one active connection per wallet and has the possibility to inform the user when a connection attempt is made during the users login, even if the attempt is not fully valid. In fact the mere sending a specific connection attempt on a walletaddress automatically causes a notification to be sent to the active connection.</h4>
+					<img style="width:60%;height:auto" class="img-responsive center-block" src="images/whitepaper/1.4v/005-img-connectedWalletInstace.png" alt="Connected Wallet Instance" title="Connected Wallet Instance" />
+					<h4>5.	<b>The Blockchain</b> also tracks any invalid login attempts of a valid wallet address and informs the owner of invalid attempts when he connects to his wallet with valid credentials.</h4>
+					<img style="width:60%;height:auto" class="img-responsive center-block" src="images/whitepaper/1.4v/006-img-badAttempConnection.png" alt="Bad Attemp Connection" title="Bad Attemp Connection" />
+					<h4>6.	The <b>Blockchain</b> does not provide the ability to retrieve the information from a wallet from the user without providing the private key associated with it. It also has the right to notify the <b>Seed Nodes</b> in case of repeated invalid attempts to cause a temporary ban on the <b>IP address</b> related to the user who tries to make a <b>Bruteforce</b> on it. On the other hand the size of a public/private keys have different sizes and are unique, to further enhance security of the system.</h4>
+					<h6>–	Minimum number of characters of a public/private key: 128</h6>
+					<h6>–	Maximum number of characters of a public/private key: 288</h6>
+					<h6>–	Minimum number of characters of a wallet address: 48</h6>
+					<h6>–	Maximum number of characters of a wallet address: 96</h6>
+					<h6>–	Number of possible minimum combinations of characters on different public/private keys: 62 ^ 128</h6>
+					<h6>–	Number of possible maximum character combinations on different public/private keys: 62 ^288</h6>
+					<h6>–	Number of possible minimum combinations of characters on wallet addresses: 62 ^ 48</h6>
+					<h6>–	Number of possible maximum character combinations on wallet addresses: 62 ^ 96</h6>
+					<h5><b>(This limitation can be changed in real time if necessary)</b></h5>
+					<img style="width:60%;height:auto" class="img-responsive center-block" src="images/whitepaper/1.4v/007-img-AttempConnectionError.png" alt="Attemp Connection Error" title="Attemp Connection Error" />
+					<h5>In case of problems, the user with his private key can regenerate new information,he will get a new <b>PIN code</b> and a new <b>private key</b>. Since the version 1.1 of the restore system of <b>Xenophyte</b>, the security has been increased against local network sniffing techniques:</h5>
+					<h5>On the <b>Wallet</b> user side:</h5>
+					<h6>a.	Generate a QR Code representing the private key of the wallet and his new wallet password for his instance on the blockchain.</h6>
+					<h6>b.	Convert the QR Code picture into Base64String and encrypt this one with AES256bit with his current private key.</h6>
+					<h6>c.	Send the QR Code encrypted with his wallet unique id (identification number) or a small part of the end of the private key (for old private key's version).</h6>
+					<h5>On the <b>Blockchain</b> side:</h5>
+					<h6>a.	Research the key from the wallet unique id or from the small part of the private key received andtry to decrypt the QR Code encrypted..</h6>
+					<h6>b.	Convert the QR Code encrypted into a Bitmap and compare the representation with actualinformations of the wallet</h6>
+					<h6>c.	Generate a new private key and pin code, encrypt every new informations with AES 256bit encryption with the previous private key of the user.</h6>
+					<h4>7.	The <b>Blockchain</b> that communicates with the user of a wallet encrypts the packets via the information that only the user has as a single encryption key but also with a system for modifying the content of the key in real time with the user.The information that composes the encrypting key is known to the user in advance so that it is not exchanged again. The composition of this encryption key is slightly modified over an irregular interval of timein order to enhance the security and to modify the general appearance of the network packets between the Blockchain and the user</h4>
+					<h4>8.	The <b>Blockchain</b> performs by security when the user sends a transaction, blocking any other attempts to send a transaction until the pending transaction is listed. This prevents for example the user from sending by mistake multiple times the same transaction.</h4>
+					<h4>9.	The <b>Blockchain</b> calculates the reception time of a transaction sent in relation to the global activity of pending transactions, this system makes it possible not to overload the Blockchain but also to give a real time estimation of the reception time of the transaction before it is sent. This system applies to all types of transactions, whether from a mining block reward, a synchronization reward given to Remote Node hosts, a regular transaction, or an anonymous transaction.</h4>
+					<h4>10.	The <b>Blockchain</b> gives the possibility of hiding its wallet address to the person who receives a transaction through an option available on the <b>official Xenophyte wallet</b> software. This option includes a fixed fee transaction of 0.00001000 XENOP per transaction, this fee is then sent to an wallet address of an <b>Xenophyte developer</b> or official tester who is randomly selected from the <b>Blockchain side</b>.</h4>
+					<h4>11.	The <b>Blockchain</b> imposes a mandatory transaction fee of a minimum amount of <b>0.00001000 XENOP</b>, this transaction amount influences the time to receive the transaction. The minimum time to receive a transaction will be one second. This amount is then listed for inclusion in the total fee balance accumulated by the Blockchain. This balance is used for pay remote node hosts and make new blocks to mine once the max supply is reached</h4>
+					<h4>12.	The Blockchain imposes a mandatory Dev Fee of 5% on each blocks mined. This amount of coins is stored for our Development Funds for list easier our coin on exchanges.</h4>
+					<h4>13.	The Blockchain only provides useful content on transactions and blocks to be synchronizedso that they are fast to obtain and lightweight with virtually constant sizes of about 0.4KB per transactions, 0.23KB per blocks while encrypting exchanges within the network. The non-encrypted portion of the transactions made available to synchronization have the following items:</h4>
+					<h6>i.	- Unique identification number of the sender</h6>
+					<h6>ii.	- False amount sent</h6>
+					<h6>iii.- False transaction tax amount.</h6>
+					<h6>iv.	- Unique identification number of the receiver date of dispatch.</h6>
+					<h6>v.	- Transaction hash.</h6>
+					<h6>vi.	- Date of receipt.</h6>
+					<h6>vii.- Block height when sending the transaction</h6>
+					<h5>This allows <b>Seed Nodes</b> and <b>Remote Nodes</b> to sort transactions against the unique identification numbers of users of a wallet, so users will only have to synchronize the data that is for their wallet. This unique identification number between each wallet is obtained only through the connection between the user of a wallet and the <b>Blockchain</b>.</h5>
+					<h5>The identification number used by transactions using the anonymity option is different from the one used for basic transactions, so as to make no link between the transactions sent, in order to hide his wallet address to the one who receives the transaction and the basic one.</h5>
+					<img style="width:60%;height:auto" class="img-responsive center-block" src="images/whitepaper/1.4v/008-img-transactionDefinition.png" alt="Transaction Definition" title="Transaction Definition" />
+					<h4>14.	The <b>Blockchain</b> has a system of automatic data copying within its own server and also a mirror system arranged on several external servers that allows redundancy of the data in realtime to secure the Blockchain in case of problem.</h4>
+					<h4>15.	The <b>Blockchain</b> has an inflation system that increases the max supply every day. Inflation increases the maximum between +0.1 <b>XENOP</b> to +0.5 <b>XENOP</b> maximum. The inflation system is linked to trading activities. For example, if current day activity is higher than the previous day there will be inflation close to +0.1 <b>XENOP</b>, if the trading activity is lower then the inflation will be closer to +0.5 <b>XENOP</b>.</h4>
+					<h4>
+						16.	The Blockchain issues the current Blocktemplate and the latest <b>mining encryption method</b> in realtime to miners, allowing Xenophyte to be updated in real time to block mining from ASIC’s.<br />
+						It is theoretically assumed that by changing the number of encryption loops, the encryption key and the required encryption size, this method will effectively block <b>ASIC</b> mining.<br />
+						Algorithms of encryption used by Xenophyte are: <b>AES</b> and <b>XOR</b>.<br />
+						It is also accepted that all mining programs put online have a function to request the latest mining method in real time as well as the current Blocktemplate to stay up to date without making a full program update.<br />
+						The life of a block is dynamic and is based on 60 seconds. It increases according to the difficulty. The higher the difficulty of mining, the higher the lifetime of the current block. If the life is reached, the current block will be renewed and difficulty is decreassed. Even though the same block is being mined, as if it’s a new block, the difficulty is decreased. This process continues till the solution for the block is found.
+					</h4>
+					<img style="width:60%;height:auto" class="img-responsive center-block" src="images/whitepaper/1.4v/009-img-BlockTemplate.png" alt="Block Template" title="Block Template" />
+					<h4>17.	<b>Seed Nodes</b> serve as a secure access point and proxy and are the only tools allowed to reach the <b>Blockchain</b> program network. with a <b>Seed Nodes</b> IP address list pre-registered in advance in the program of <b>the Blockchain</b> and also on his firewall.</h4>
+					<h4>18.	<b>Seed Nodes</b> serve as data cache for the blocks obtained in the mining operation and the transactions made by the users by distributing them in the same way as the <b>Blockchain</b> to theusers. Remote Nodes also serve as an access point to this data and can be hosted by external users.</h4>
+					<h4>19.	<b>Seed Nodes</b> do not have the ability to read the exchanges between the users who use a wallet and the <b>Blockchain</b>. The data exchanges are encrypted in advance with the data created during the creation of the wallet and are supplied to the user <b><u>only once</u></b> and are no longer sent by the <b>Blockchain</b> or by the user. </h4>
+					<h4>
+						20.	<b>Seed Nodes</b> do not have any rights on the <b>Blockchain</b>. They only have the ability to pass encrypted data between the users and the <b>Blockchain</b>.<br />
+						They can, however, serve as a firewall for the <b>Blockchain</b>.
+					</h4>
+					<h5>The <b>Blockchain</b> communicates certain received packet errors to <b>Seed Nodes</b> in order to disconnect or ban IP addresses if necessary.</h5>
+
+					<h4>
+						21. <b>Seed Nodes</b> publicly list <b>Remote Nodes</b> hosted and managed by third-party users
+						if they arealways synchronized identical to the <b>Seed Nodes</b>. <b>Seed nodes</b> have the
+						ability to check <b>Remote Nodes</b> to determine the integrity of the <b>Remote Node</b>.<br />
+						In order for the <b>Seed Nodes</b> to be able to check the hosts of <b>Remote Nodes</b> who wish
+						to be listed, the Remote Node host <b>MUST</b> configure their system to be visible on the
+						network having appropriate ports open and routed to the public internet.<br />
+						Configuration of a <b>Remote Node</b> to be listed as a public by the Seed Node is the
+						responsibility of the node operator. It is suggested to open and route ports 18000
+						18002 to the public IP address of the Remote Node system.<br />
+						It is also necessary that the response time and the connection of the <b>Remote Node</b>
+						respond quickly to the <b>Seed Nodes</b>. <b>Remote Node</b> hosts that have limited bandwidth
+						may be listed, but be banned or unused by the <b>Seed Nodes</b>. A minimum of 10kb/s is
+						recommended.<br />
+						This system also makes it possible to reward the hosts of the <b>Remote Nodes</b> which
+						participates to enlarge the network of emission of the data to be synchronized thanks
+						to a percentage deducted on the transaction fees collected over 24 hours by
+						communicating a report of precise time of synchronization between the <b>Seed Nodes</b>
+						and Remote Nodes at the <b>Blockchain</b>.
+					</h4>
+					<h4>22. <b>Remote Nodes</b> allow to redistribute the synchronization data of the Blockchain obtained with <b>Seed Nodes</b> and to distribute them to wallet users without going through the centralized network.</h4>
+					<h4>23. <b>Remote Nodes</b> can be listed in a list on <b>Seed Nodes</b> allowing them to be used by the users using a wallet, they must be synchronized in the most precise way compared to the data put on line by <b>Seed Nodes</b>, this functionality permits <b>Remote Nodes</b> to participate in the data distribution of the <b>Blockchain</b>.</h4>
+					<h4>24. <b>Remote Nodes</b> can sort synchronized transactions by unique identification number of the user's wallet address to return the number of transactions held by the user and their data.</h4>
+					</div>
+
+				<div class="panel-body" id="XenophyteWhitepaperTokenNetwork">
+					<h3 class="text-center"><b>II. Token Network of the Blockchain(Beta).</b></h3>
+					<h5>
+						(The Token Network system is on Beta and should receive updates for increase his security)<br />
+						<b>The Token Network of the Blockchain</b>, is a system who permit to retrieve wallet
+						informations/submit transactions without to keep a connection opened and online
+						24h/24 just by <b>HTTP GET</b> request encrypted with a precise schema of request to respect.<br />
+						The token require to be use before his expiration of 10 seconds and can be use only
+						one time. <b>Every GET</b> request require to include also the datetime of sent inside the
+						request encrypted, that's permit to make an expiration date of old encrypted packets
+						sent.<br />
+						<b>Algorithm of encryption used: AES 256bit</b><br />
+						To <b>use the Token Network</b>, the user have to repeat everytime the same schema for
+						retrieve an information or to send a transaction:
+					</h5>
+					<h4><b>1. Required informations to retrieve a new valid token:</b></h4>
+					<h5>
+						- On the encryption key: → Wallet Address + Wallet Public Key + Current Wallet
+						Password - On the request encrypted: → ask-token|empty|date of packet. Request sent: →
+						TOKEN-NETWORK|wallet address|encrypted request Request received (For
+						example):<br />
+						{"result":"<b>
+							4egdSyb464Az1jly8Z9ts8xHbWCL7e9ViyEA3JjIajwu3sRdFdRvVRK
+							m4wms5DJm
+						</b>","version": "2.0.0.1" }<br />
+						The decryption key of the <b>result</b> received encapsulated inside a <b>json</b> string:  Wallet
+						Address + Walet Public Key + Current Wallet Password
+					</h5>
+					<h4><b>2. Required informations to use a valid token:</b></h4>
+					<h5>
+						- The encryption key of the request:<br />
+						→ Wallet Address + Wallet Public Key + Current Wallet Password - On
+						the request encrypted:<br />
+						→ ask-wallet-balance|token-received|date of packet. (For example) -
+						Request sent:<br />
+						→ TOKEN-NETWORK|wallet address|encrypted request<br />
+						- Request received (For example):<br />
+						{"result":"<b>
+							gFsal9bHEIUJC3aXlovMRSatUnxxc5cnbaTQYPC+
+							+Xs=
+						</b>","version": "2.0.0.1"}<br />
+						- The decryption key of the <b>result</b> received encapsulated inside a <b>json</b> string:<br />
+						→ Wallet Address + Walet Public Key + Current Wallet Password + previous
+						token used
+					</h5>
+					<h4><b>3. Available request who can be submit to the Token Network:</b></h4>
+					<h5>
+						<b>TOKEN-ASK:</b> Ask a new token.<br />
+						<b>TOKEN-ASK-BALANCE:</b> Ask current balance information of the wallet.<br />
+						<b>TOKEN-ASK-WALLET-ID:</b> Ask Unique Wallet ID of the wallet.<br />
+						<b>TOKEN-ASK-WALLET-ANONYMOUS-ID:</b> Ask unique Anonymous<br />
+						Wallet ID of the wallet.<br />
+						TOKEN-ASK-WALLET-SEND-TRANSACTION: Ask to send a
+						transaction.<br />
+						Every wrong requests received on the <b>Blockchain</b> side, notify <b>Seed Nodes</b>
+						for proceed banishments, also every wrong requests notify the wallet user.<br />
+						<b>The Token Network</b> respect the unique connection system of the
+						<b>Blockchain</b>, that's mean a token request cannot be submitted if the wallet
+						target is connected and notify the user.<br />
+						Seed Nodes get also a notification of an «<b>invalid packet</b>» for proceed
+						banishments.
+					</h5>
+				</div>
+				<div class="panel-body" id="XenophyteWhitepaperSoftHardFork">
+					<h3 class="text-center"><b>III. Soft/Hard Fork of the Blockchain.</b></h3>
+					<h5>
+						When a <b>Soft/Hard Fork</b> is set up on the <b>Xenophyte Blockchain</b>, the source code
+						of the previous version will be published online. The current version implemented
+						during the <b>Soft/Hard Fork</b> will not put online, for the following reasons:<br />
+						For security, each Soft/Hard Fork changes security procedures and improves
+						them so that they are always different from previous versions. To include new
+						features to keep a distance to the competition.<br />
+						<i>
+							The <b>Whitepaper</b> may be modified during the <b>Xenophyte</b> test phase and may also
+							be modified after the test phase if a significant update is implemented on its
+							operating protocol.
+						</i><br />
+						It is nevertheless possible to carry out a fork of the <b>Blockchain</b> with the
+						synchronization data that can be completely obtained with <b>Seed Nodes</b> and
+						<b>Remote Nodes</b>.<br />
+						So you can go back to the point of your copy by knowing how many blocks of
+						mining have been found and therefore get the total amount in circulation.<br />
+						Then with the complete history of the transactions, when your Blockchain obtains
+						the address of wallet and that public key, you can decrypt transactions for this
+						address to identify the amounts sent and received, and thus recompose the total
+						balance of users who want to use your Fork.<br />
+						With this method you can launch your Fork to the public while continuing to
+						serve new users without penalizing the "old" users who wish to join your copy.
+					</h5>
+					<h5></h5>
+				</div>
+				<div class="panel-body" id="XenophyteWhitepaperBlockchainMaintenances">
+					<h3 class="text-center"><b>IV. Maintenances on the Blockchain</b></h3>
+					<h5>
+						As mentioned before, <b>Xenophyte</b> is a centralized cryptocurrency, so it is possible
+						that maintenance is performed and can thus temporarily block access to the
+						<b>Blockchain</b>.<br />
+						guarantee the security of the data, several backup systems have been set up,
+						namely an internal copying of the encrypted data over a regular interval, and a
+						mirror system making it possible to copy the data of the <b>Blockchain</b> in realtime
+						set up on several servers.<br/>
+						These maintenances are also intended to improve the <b>Blockchain</b>, and it can that
+						if necessary a <b>Soft/Hard Fork</b> is set up for this purpose. Moving the <b>Blockchain</b>
+						to more powerful servers can also happen if necessary.
+					</h5>
+				</div>
+			</div>			
+		</div>
+	</div>
+
+	<footer class="navbar-default navbar-static-bottom">
+		<div class="container-fluid">			
+			<p class="text-center" id="textFooter">&copy; 2023 Copyright: <a href="https://xenophyte.com/">XENOPHYTE</a></p>
+			<span><p class="text-center"id="textCopyright">Website created by Xenophyte all rights reserved.</p></span>
+		</div>
+	</footer>
+
+</body>
+</html>
