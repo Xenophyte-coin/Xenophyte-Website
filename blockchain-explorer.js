@@ -447,6 +447,11 @@
 		
 		var loading_TB_BRD = document.getElementById("loadingBRD");
 		loading_TB_BRD.innerHTML = '';
+
+		var btnShowCharts = document.getElementById("btnShowCharts");
+		btnShowCharts.innerHTML = 'uPDATE CHARTs';
+
+		
 	}
 
 	// THankis MSFT Copilot ;)
